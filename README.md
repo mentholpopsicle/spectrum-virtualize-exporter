@@ -75,6 +75,7 @@ targets:
 | lsmdiskgrp | Get a detailed view of storage pools that are visible to the clustered system. | Disabled | [List](docs/lsmdiskgrp_metrics.md) | 16 |
 | lsvdisk | Get detailed view of volumes that are recognized by the system. | Disabled | [List](docs/lsvdisk_metrics.md) | 1 |
 | lsvdiskcopy | Get volume copy information. | Disabled | [List](docs/lsvdiskcopy_metrics.md) | 1 |
+| lshostvdiskmap | Get host information. | Disabled | [List](docs/lshostvdiskmap_metrics.md) | 1 |
 
 ## References
 
