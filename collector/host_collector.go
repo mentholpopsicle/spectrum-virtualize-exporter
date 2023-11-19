@@ -16,7 +16,7 @@ var (
 
 func init() {
 	registerCollector("lshostvdiskmap", defaultDisabled, NewHostCollector)
-	labelnames := []string{"target", "resource", "vdisk_UID", "volume_name", "host_cluster_name"}
+	labelnames := []string{"target", "resource", "host_name", "vdisk_UID", "volume_name", "host_cluster_name"}
 	hostVolume = prometheus.NewDesc(prefix_host+"name", "The hosts connected to the storage.", labelnames, nil)
 }
 
@@ -68,7 +68,7 @@ func (c *hostCollector) Collect(sClient utils.SpectrumClient, ch chan<- promethe
 		if err != nil {
 			log.Errorf("Converting capacity unit failed: %s", err)
 				}
-		ch <- prometheus.MustNewConstMetric(hostVolume, prometheus.GaugeValue, float64(id_name), sClient.IpAddress, sClient.Hostname, host.Get("vdisk_UID").String(), host.Get("vdisk_name").String(), host.Get("host_cluster_name").String())
+		ch <- prometheus.MustNewConstMetric(hostVolume, prometheus.GaugeValue, float64(id_name), sClient.IpAddress, sClient.Hostname, host.Get("name").String(), host.Get("vdisk_UID").String(), host.Get("vdisk_name").String(), host.Get("host_cluster_name").String())
 	}
 	log.Debugln("Leaving host collector.")
 	return err
