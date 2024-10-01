@@ -30,14 +30,10 @@ the [IBM SAN Volume Controller](https://www.ibm.com/us-en/marketplace/san-volume
     ```
     export GOPATH=your_gopath
     cd your_gopath
-    git clone git@github.ibm.com:ZaaS/spectrum-virtualize-exporter.git
+    wget github.com/mentholpopsicle/spectrum-virtualize-exporter
     cd spectrum-virtualize-exporter
     go build
     go install (Optional but recommended. This step will copy spectrum-virtualize-exporter binary package into $GOPATH/bin directory. It will be connvenient to copy the package to Monitoring docker image)
-    ```
-  * docker image
-    ```
-    docker build -t spectrum-virtualize-exporter .
     ```
 
 * Running:
@@ -45,12 +41,7 @@ the [IBM SAN Volume Controller](https://www.ibm.com/us-en/marketplace/san-volume
     ```
     ./spectrum-virtualize-exporter --config.file=/etc/spectrumVirtualize/spectrumVirtualize.yml
     ```
-
-  * Run as docker image
-    ```
-    docker run -it -d -p 9119:9119 -v /etc/spectrumVirtualize/spectrumVirtualize.yml:/etc/spectrumVirtualize/spectrumVirtualize.yml --name spectrum-virtualize-exporter spectrum-virtualize-exporter --config.file=/etc/spectrumVirtualize/spectrumVirtualize.yml --log.level debug --restart always
-    ```
-
+    
   * Visit http://localhost:9119/metrics
 
 ## Configuration
